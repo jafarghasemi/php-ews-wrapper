@@ -394,6 +394,7 @@ class Message{
 
         $fetch_request->ItemShape = new ItemResponseShapeType();
         $fetch_request->ItemShape->BaseShape = DefaultShapeNamesType::ALL_PROPERTIES;
+        $fetch_request->ItemIds = new NonEmptyArrayOfBaseItemIdsType();
 
         $item = new ItemIdType();
         $item->Id = $message_id;
