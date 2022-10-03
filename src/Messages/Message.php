@@ -363,6 +363,7 @@ class Message{
                 $det->attachments = $msg_info->Attachments && $msg_info->Attachments->FileAttachment ? $msg_info->Attachments->FileAttachment : "";
                 $det->is_read = $msg_info->IsRead;
                 $det->message = $msg_info->Body->_;
+		$det->full_details = $msg_info;
 
                 array_push($messages, $det);
             }
