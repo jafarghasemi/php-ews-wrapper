@@ -28,9 +28,9 @@ class Tasks{
 
         if($response[0]->ResponseClass == ResponseClassType::SUCCESS){
             //format the response by returning specific fields
-            $retrieved_contacts = $response[0]->RootFolder->Items->Contact;
+            $retrieved_tasks = $response[0]->RootFolder->Items->Task;
 
-            $res->contacts = $retrieved_contacts;
+            $res->tasks = $retrieved_tasks;
             $res->status = 1;
         }
 
