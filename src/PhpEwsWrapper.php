@@ -15,8 +15,6 @@ use amirsanni\phpewswrapper\Calendar\Events;
 class PhpEwsWrapper {
     protected $ews;//ews connection client
     protected $version;
-
-    private $msg_obj;//phpews message object
     
     /** MESSAGES */
     protected $messages_class_obj;
@@ -40,6 +38,7 @@ class PhpEwsWrapper {
         try{
             $this->__setVersion($version);
             $this->ews = new Client($server, $email, $password, $this->version);
+            $this->ews->setCurlOptions([CURLOPT_HTTPAUTH => CURLAUTH_BASIC]);
 
             //instantiate required classes
             $this->events = new Events($this->ews);
@@ -49,7 +48,7 @@ class PhpEwsWrapper {
             $this->folders = new Folders($this->ews);
         }
 
-        catch(Exception $e){
+        catch(\Exception $e){
             echo $e->getMessage();
         }
     }
