@@ -40,6 +40,7 @@ class PhpEwsWrapper {
         try{
             $this->__setVersion($version);
             $this->ews = new Client($server, $email, $password, $this->version);
+            $this->ews->setCurlOptions([CURLOPT_HTTPAUTH => CURLAUTH_BASIC]);
 
             //instantiate required classes
             $this->events = new Events($this->ews);
