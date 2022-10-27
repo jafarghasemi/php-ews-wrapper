@@ -11,12 +11,11 @@ use amirsanni\phpewswrapper\Folders;
 use amirsanni\phpewswrapper\Contacts;
 use amirsanni\phpewswrapper\Messages\Mail;
 use amirsanni\phpewswrapper\Calendar\Events;
+use Exception;
 
 class PhpEwsWrapper {
     protected $ews;//ews connection client
     protected $version;
-
-    private $msg_obj;//phpews message object
     
     /** MESSAGES */
     protected $messages_class_obj;
@@ -36,11 +35,18 @@ class PhpEwsWrapper {
     ********************************************************************************************************************************
     */
 
-    public function __construct(string $email, string $password, string $server="outlook.office365.com", $version='2016'){
+    public function __construct(string $access_token, string $email, string $password = "", string $server="outlook.office365.com", $version='2016'){
         try{
             $this->__setVersion($version);
-            $this->ews = new Client($server, $email, $password, $this->version);
-            $this->ews->setCurlOptions([CURLOPT_HTTPAUTH => CURLAUTH_BASIC]);
+            $this->ews = new Client($server, $this->version);
+
+            if($access_token) {
+                $this->ews->authWithOauth2($access_token);
+            } else if($email && $password){
+                $this->ews->authWithUserAndPass($email, $password);
+            } else {
+                throw new Exception("Authentication failed. Provide either your access token or your email and password");
+            }
 
             //instantiate required classes
             $this->events = new Events($this->ews);
@@ -50,7 +56,7 @@ class PhpEwsWrapper {
             $this->folders = new Folders($this->ews);
         }
 
-        catch(Exception $e){
+        catch(\Exception $e){
             echo $e->getMessage();
         }
     }

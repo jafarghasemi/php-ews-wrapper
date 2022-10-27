@@ -11,9 +11,15 @@
         }
     ],
     "require": {
-        "php-ews/php-ews": "1.0",
+        "php-ews/php-ews": "dev-master",
         "php":">=7.0"
     },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/facilioo/php-ews"
+        }
+    ],
     "autoload":{
         "psr-4": {
             "amirsanni\\phpewswrapper\\":"src/"

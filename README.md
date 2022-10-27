@@ -37,10 +37,13 @@ composer require amirsanni/php-ews-wrapper
 ```
 use amirsanni\phpewswrapper\PhpEwsWrapper;
 
-$ews = new PhpEwsWrapper('email', 'password', 'optionalServerAddress', 'optionalVersion');
+$ews = new PhpEwsWrapper('accessToken', 'email', 'optionalPassword', 'optionalServerAddress', 'optionalVersion');
 ```
 
-**Note:** Server address defaults to _outlook.office365.com_  
+**Note:** 
+- Password is required if accessToken is not provided.
+- Access token is preferred because password authentication won't work unless for on-premise installations.
+- Server address defaults to _outlook.office365.com_  
 **Supported Versions: 2007, 2009, 2010, 2013, 2016**. _Defaults to 2016_.
 
 

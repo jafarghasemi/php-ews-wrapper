@@ -38,7 +38,7 @@ class Folders{
 
         // configure the view
         $request->IndexedPageFolderView = new IndexedPageViewType();
-        $request->IndexedPageFolderView->BasePoint = 'Beginning';
+        $request->IndexedPageFolderView->BasePoint = IndexBasePointType::BEGINNING;
         $request->IndexedPageFolderView->Offset = 0;
 
         $request->ParentFolderIds = new NonEmptyArrayOfBaseFolderIdsType();

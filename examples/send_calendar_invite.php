@@ -3,7 +3,7 @@ require "../vendor/autoload.php";
 
 use amirsanni\phpewswrapper\PhpEwsWrapper;
 
-$ews = new PhpEwsWrapper('email', 'password', 'optionalServerAddress', 'optionalVersion');
+$ews = new PhpEwsWrapper('accessToken', 'email', 'optionalPassword', 'optionalServerAddress', 'optionalVersion');
 
 $ews->events->event_start = '2019-06-27 08:00:00';
 $ews->events->event_end = '2019-06-27 10:00:00';
