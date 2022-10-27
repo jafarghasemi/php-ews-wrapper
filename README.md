@@ -43,7 +43,9 @@ $ews = new PhpEwsWrapper('accessToken', 'email', 'optionalPassword', 'optionalSe
 **Note:** 
 - Password is required if accessToken is not provided.
 - Access token is preferred because password authentication won't work unless for on-premise installations.
-- Server address defaults to _outlook.office365.com_  
+- Server address defaults to _outlook.office365.com_
+
+
 **Supported Versions: 2007, 2009, 2010, 2013, 2016**. _Defaults to 2016_.
 
 
