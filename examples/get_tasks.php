@@ -4,7 +4,7 @@ require "../vendor/autoload.php";
 
 use amirsanni\phpewswrapper\PhpEwsWrapper;
 
-$ews = new PhpEwsWrapper('email', 'password', 'optionalServerAddress', 'optionalVersion');
+$ews = new PhpEwsWrapper('accessToken', 'email', 'optionalPassword', 'optionalServerAddress', 'optionalVersion');
 
 $ews->tasks->limit = 10;
 
